@@ -23,7 +23,6 @@ function App() {
         }
     };
 
-    // Fonction pour être en haut de la page quand on arrive sur une page --> merci React.js
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -32,7 +31,7 @@ function App() {
     useEffect(() => {
         // Deactivate the image if and only if the image is already activated
         const clickOrScrollHandler = () => {
-            console.log(displayModal)
+            // console.log(displayModal)
             if (displayModal) {
                 setDisplayModal(false);
             }
