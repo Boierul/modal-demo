@@ -72,15 +72,6 @@ function App() {
             backgroundColor: '#2a2a2a',
         }}>
             <Cursor/>
-            {/* <a href="#" target="_blank"*/}
-            {/*   className={`${styles.link} ${styles.animation__background}`}*/}
-            {/*   style={{*/}
-            {/*       fontSize: '2.6rem',*/}
-            {/*       fontWeight: '300',*/}
-            {/*       fontFamily: 'Montserrat, sans-serif',*/}
-            {/*   }}>*/}
-            {/*    Voir la video*/}
-            {/*</a>*/}
 
             {displayModal && <ModalImage image={imageModal} alt={altModal} display={displayModal}/>}
             {/*<ModalImage image={imageModal} alt={altModal} display={displayModal}/>*/}
