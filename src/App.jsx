@@ -5,6 +5,9 @@ import srcImg1 from './images/mode/lycan-mode-ethan-piboyeux-2.jpg'
 import srcImg2 from './images/mode/lycan-mode-ethan-piboyeux-4.jpg'
 import ModalImage from "./components/ModalImage/index.jsx"
 import Cursor from "./components/Cursor/index.jsx"
+import useOutsideClickHandler from './hooks/outside.click.handler'
+
+const IMG_MODAL_CLASSNAME = 'img-modal';
 
 function App() {
     // Modal image variables
@@ -14,17 +17,12 @@ function App() {
 
     // Function to change the image according to the image that is clicked on
     const handleImage = (e) => {
-        // console.log(displayModal);
-
         // Display the modal only if the screen is greater than 900px --> when we are in row
         if (window.innerWidth > 900) {
             setImageModal(e.target.src);
             setAltModal(e.target.alt);
             setDisplayModal(true);
         }
-        // console.log('image src:', imageModal);
-        // console.log('image alt:', altModal);
-        // console.log(displayModal);
     };
 
     useEffect(() => {
@@ -35,9 +33,8 @@ function App() {
     useEffect(() => {
         // Deactivate the image if and only if the image is already activated
         const clickOrScrollHandler = () => {
-            console.log(displayModal);
             if (displayModal) {
-                setDisplayModal(!displayModal);
+                setDisplayModal(false);
             }
         };
 
@@ -63,6 +60,9 @@ function App() {
         };
     }, []);
 
+    // This will set display modal to false, if a click on a component that does not have `IMG_MODAL_CLASSNAME` className
+    useOutsideClickHandler(IMG_MODAL_CLASSNAME, () => setDisplayModal(false));
+
     return (
         <div style={{
             width: '100vw',
@@ -74,18 +74,19 @@ function App() {
         }}>
             <Cursor/>
 
-            {displayModal && <ModalImage image={imageModal} alt={altModal} display={displayModal}/>}
-            {/*<ModalImage image={imageModal} alt={altModal} display={displayModal}/>*/}
+            {displayModal && <ModalImage image={imageModal} alt={altModal} display={displayModal} />}
 
             <div className={styles.container}>
                 <div className={styles.images__container}>
                     <div className={`${styles.row} ${styles.animation__transform_top}`}>
                         <img
+                            className={IMG_MODAL_CLASSNAME}
                             src={srcImg1}
                             alt="Alt"
                             onClick={handleImage}
                         />
                         <img
+                            className={IMG_MODAL_CLASSNAME}
                             src={srcImg2}
                             alt="Alt"
                             onClick={handleImage}
