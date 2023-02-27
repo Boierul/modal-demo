@@ -15,6 +15,7 @@ function App() {
     // Function to change the image according to the image that is clicked on
     const handleImage = (e) => {
         // console.log(displayModal);
+
         // Display the modal only if the screen is greater than 900px --> when we are in row
         if (window.innerWidth > 900) {
             setImageModal(e.target.src);
@@ -60,7 +61,7 @@ function App() {
             // Mobile
             window.removeEventListener('touchmove', clickOrScrollHandler, false);
         };
-    });
+    }, []);
 
     return (
         <div style={{
