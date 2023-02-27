@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react'
 
-import './App.module.sass'
+import styles from './App.module.sass'
 import srcImg1 from './images/mode/lycan-mode-ethan-piboyeux-2.jpg'
 import srcImg2 from './images/mode/lycan-mode-ethan-piboyeux-4.jpg'
-import styles from './App.module.sass'
 import ModalImage from "./components/ModalImage/index.jsx"
 import Cursor from "./components/Cursor/index.jsx"
 
@@ -17,9 +16,11 @@ function App() {
     const handleImage = (e) => {
         // console.log(displayModal);
         // Display the modal only if the screen is greater than 900px --> when we are in row
-        setImageModal(e.target.src);
-        setAltModal(e.target.alt);
-        setDisplayModal(true);
+        if (window.innerWidth > 900) {
+            setImageModal(e.target.src);
+            setAltModal(e.target.alt);
+            setDisplayModal(true);
+        }
         // console.log('image src:', imageModal);
         // console.log('image alt:', altModal);
         // console.log(displayModal);
