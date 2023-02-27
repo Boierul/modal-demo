@@ -16,6 +16,7 @@
   position: relative
   visibility: hidden
   animation: display__background .0001s forwards
+
   &::after
     content: ''
     position: absolute
@@ -30,6 +31,7 @@
 // Le Sass de la page
 .container
   margin-bottom: 5rem
+
   .images__container
     display: flex
     justify-content: center
@@ -48,7 +50,7 @@
       cursor: pointer
 
     img
-      @media screen and ( max-width: 900px )
+      @media screen and (max-width: 900px)
         cursor: auto
 
     .row
@@ -56,21 +58,61 @@
       justify-content: center
       align-items: center
       width: 100%
-      @media screen and ( max-width: 900px )
+      @media screen and (max-width: 900px)
         flex-direction: column
 
       img
-        width: calc(50% - 2rem / 2)
-        @media screen and ( max-width: 900px )
+        width: calc(30% - 4rem / 2)
+        @media screen and (max-width: 900px)
           width: 100%
 
         &:last-child
           margin-left: 2rem
-          @media screen and ( max-width: 900px )
+          @media screen and (max-width: 900px)
             margin-left: 0
 
 
     .animation__background
       animation-delay: 3s
+
       &::after
         animation-delay: 2.5s
+
+
+a
+  color: $primary-color
+  text-decoration: none
+  position: relative
+
+  &::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    height: .2rem
+    background: $primary-color
+    transition: width .5s cubic-bezier(0.4, 0, 0.2, 1)
+
+  &:hover
+    &::before
+      width: 0
+
+
+    .link
+      font-size: 2.6rem
+      font-weight: 300
+      font-family: $main-font
+      display: inline-flex
+      justify-content: center
+      align-items: center
+
+      &.animation__background
+        animation-delay: 1.9s
+
+        &::after
+          animation-delay: 1.4s
+
+      @media screen and (max-width: 520px)
+        font-size: 2rem
+

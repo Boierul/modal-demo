@@ -15,12 +15,14 @@ function App() {
 
     // Function to change the image according to the image that is clicked on
     const handleImage = (e) => {
+        // console.log(displayModal);
         // Display the modal only if the screen is greater than 900px --> when we are in row
-        if (window.innerWidth > 900) {
-            setImageModal(e.target.src);
-            setAltModal(e.target.alt);
-            setDisplayModal(true);
-        }
+        setImageModal(e.target.src);
+        setAltModal(e.target.alt);
+        setDisplayModal(true);
+        // console.log('image src:', imageModal);
+        // console.log('image alt:', altModal);
+        // console.log(displayModal);
     };
 
     useEffect(() => {
@@ -31,9 +33,9 @@ function App() {
     useEffect(() => {
         // Deactivate the image if and only if the image is already activated
         const clickOrScrollHandler = () => {
-            // console.log(displayModal)
+            console.log(displayModal);
             if (displayModal) {
-                setDisplayModal(false);
+                setDisplayModal(!displayModal);
             }
         };
 
@@ -57,12 +59,30 @@ function App() {
             // Mobile
             window.removeEventListener('touchmove', clickOrScrollHandler, false);
         };
-    }, [displayModal]);
+    });
 
     return (
-        <>
-            {/*<Cursor/>*/}
-            <ModalImage image={imageModal} alt={altModal} display={displayModal}/>
+        <div style={{
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#2a2a2a',
+        }}>
+            <Cursor/>
+            {/* <a href="#" target="_blank"*/}
+            {/*   className={`${styles.link} ${styles.animation__background}`}*/}
+            {/*   style={{*/}
+            {/*       fontSize: '2.6rem',*/}
+            {/*       fontWeight: '300',*/}
+            {/*       fontFamily: 'Montserrat, sans-serif',*/}
+            {/*   }}>*/}
+            {/*    Voir la video*/}
+            {/*</a>*/}
+
+            {displayModal && <ModalImage image={imageModal} alt={altModal} display={displayModal}/>}
+            {/*<ModalImage image={imageModal} alt={altModal} display={displayModal}/>*/}
 
             <div className={styles.container}>
                 <div className={styles.images__container}>
@@ -80,7 +100,7 @@ function App() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
